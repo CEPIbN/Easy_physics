@@ -1,0 +1,7 @@
+tqdm
+langchain_community
+bs4
+html2text
+langchain_ollama
+chromadb
+langchain
