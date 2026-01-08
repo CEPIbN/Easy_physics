@@ -48,6 +48,3 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Project specific
-db_metadata_v5/  # Chroma векторная БД
-docs/            # Загруженные документы
