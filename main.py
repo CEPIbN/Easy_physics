@@ -1,11 +1,8 @@
-from fastapi.middleware.cors import CORSMiddleware
-
-from models.index import ChatMessage
-from providers.ollama import query_rag
-
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-
+from fastapi.middleware.cors import CORSMiddleware
+from provider.index import ChatMessage
+from provider.ollama import query_rag
 
 app = FastAPI()
 app.add_middleware(
@@ -16,13 +13,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 app.mount("/public", StaticFiles(directory="public"), name="public")
-
 
 @app.get("/")
 async def read_root():
-    return {"Hello": "world"}
+    return {"Hello": "World"}
 
 
 @app.post("/chat/{chat_id}")

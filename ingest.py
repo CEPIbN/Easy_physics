@@ -1,73 +1,78 @@
-# Langchain dependencies
+# Импорт необходимых библиотек
 import hashlib
 import os
 import shutil
-from pathlib import Path
 from typing import List, Generator
-
-from langchain_community.document_loaders import TextLoader
+from langchain_community.document_loaders import PyPDFLoader  # Убрали TextLoader
+from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import MarkdownTextSplitter
 from langchain_core.documents import Document
-from langchain_community.vectorstores import Chroma
 from langchain_ollama import OllamaEmbeddings
 
-# Path to the directory to save Chroma database
-CHROMA_PATH = "./db_metadata_v5"
+# Путь до директории ChromaDB
+CHROMA_PATH = "./db_metadata"
 DATA_PATH = "./docs"
 global_unique_hashes = set()
 
 
-def walk_through_files(path: str, file_extension: str = '.txt') -> Generator[str, None, None]:
-    """Walk through files in directory and yield file paths."""
+def walk_through_pdf_files(path: str) -> Generator[str, None, None]:
+    """Проходимся по PDF файлам в каталоге и указываем путь до этих файлов"""
     for (dir_path, _, filenames) in os.walk(path):
         for filename in filenames:
-            if filename.endswith(file_extension):
+            if filename.lower().endswith('.pdf'):  # Проверяем расширение .pdf
                 yield os.path.join(dir_path, filename)
 
 
 def load_documents() -> List[Document]:
     """
-    Load documents from the specified directory
-    Returns:
-    List of Document objects
+    Загружаем PDF документы из каталога docs
+    :return:
+    Список объектов документа
     """
     documents = []
-    for f_name in walk_through_files(DATA_PATH):
-        # Явно преобразуем в строку, если нужно
-        document_loader = TextLoader(str(f_name), encoding="utf-8")
-        documents.extend(document_loader.load())
 
+    # Загрузка только PDF файлов
+    pdf_files = []
+    for (dir_path, _, filenames) in os.walk(DATA_PATH):
+        for filename in filenames:
+            if filename.lower().endswith(".pdf"):
+                pdf_files.append(os.path.join(dir_path, filename))
+
+    for pdf_file in pdf_files:
+        try:
+            loader = PyPDFLoader(pdf_file)
+            documents.extend(loader.load())
+            print(f"Загружен PDF: {pdf_file}")
+        except Exception as e:
+            print(f"Ошибка при загрузке {pdf_file}: {e}")
+
+    print(f"Всего загружено {len(documents)} страниц из PDF файлов")
     return documents
 
 
 def hash_text(text: str) -> str:
-    """Generate a hash value for the text using SHA-256."""
+    """Генерирует хэш-значение для текста, используя SHA-256"""
     hash_object = hashlib.sha256(text.encode())
     return hash_object.hexdigest()
 
 
 def split_text(documents: List[Document]) -> List[Document]:
     """
-    Split the text content of the given list of Document objects into smaller chunks.
-
-    Args:
-    documents (List[Document]): List of Document objects containing text content to split.
-
-    Returns:
-    List[Document]: List of Document objects representing the split text chunks.
+    Разделяет текстовое содержимое документов на более мелкие фрагменты
+    :param documents: Список объектов документа, содержащих текстовое содержимое для разделения.
+    :return: Список объектов документа, представляющих разделенные текстовые фрагменты (chunks).
     """
-    # Initialize text splitter with specified parameters
+    # Разделение текста с данными параметрами
     text_splitter = MarkdownTextSplitter(
-        chunk_size=500,  # Size of each chunk in characters
-        chunk_overlap=100,  # Overlap between consecutive chunks
-        length_function=len,  # Function to compute the length of the text
+        chunk_size=500,  # Размер каждого фрагмента в символах
+        chunk_overlap=100,
+        length_function=len,  # Функция для вычисления длины текста
     )
-
-    # Split documents into smaller chunks using text splitter
+    # Разделение документов на более мелкие фрагменты функцией text_splitter
     chunks = text_splitter.split_documents(documents)
-    print(f"Split {len(documents)} documents into {len(chunks)} chunks.")
+    print(f"Документы {len(documents)} разделены на {len(chunks)} частей.")
 
-    # Deduplication mechanism
+    # Убираем дубликаты
     unique_chunks = []
     for chunk in chunks:
         chunk_hash = hash_text(chunk.page_content)
@@ -75,44 +80,40 @@ def split_text(documents: List[Document]) -> List[Document]:
             unique_chunks.append(chunk)
             global_unique_hashes.add(chunk_hash)
 
-    # Print example of page content and metadata for a chunk
-    print(f"Unique chunks equals {len(unique_chunks)}.")
-    # print(unique_chunks[:-5])
-
-    return unique_chunks  # Return the list of split text chunks
+    # Вывод содержимого страницы и метаданных для фрагментов
+    print(f"Количество уникальных фрагментов {len(unique_chunks)}.")
+    return unique_chunks
 
 
 def save_to_chroma(chunks: List[Document]) -> None:
     """
-    Save the given list of Document objects to a Chroma database.
-
-    Args:
-    chunks (List[Document]): List of Document objects representing text chunks to save.
-
-    Returns:
-    None
+    Сохранение заданных объектов документа в Chroma DB.
+    :param chunks: Список объектов документов, представляющих фрагменты текста для сохранения.
+    :return: None
     """
-    # Clear out the existing database directory if it exists
+    # Удаление существующего каталога БД, если он существует
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
 
-    # Create a new Chroma database from the documents using Ollama embeddings
+    # Создание новой БД на основе документов, используя Ollama embeddings
     db = Chroma.from_documents(
         documents=chunks,
         embedding=OllamaEmbeddings(model="mxbai-embed-large"),
         persist_directory=CHROMA_PATH
     )
 
-    # Persist the database to disk
-    db.persist()
-    print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")
+    # Запись данных в БД
+    print(f"Сохранено {len(chunks)} фрагментов в директории {CHROMA_PATH}")
 
 
 def generate_data_store() -> None:
-    """Generate vector database in chroma from documents."""
-    documents = load_documents()  # Load documents from a source
-    chunks = split_text(documents)  # Split documents into manageable chunks
-    save_to_chroma(chunks)  # Save the processed data to a data store
+    """Создание векторной БД в Chroma из документов"""
+    documents = load_documents()  # Загрузка документов из источника
+    if documents:  # Проверяем, что документы загрузились
+        chunks = split_text(documents)  # Разделение документов на фрагменты
+        save_to_chroma(chunks)  # Сохранение обработанных данных в хранилище
+    else:
+        print("Не найдено PDF файлов для обработки")
 
 
 if __name__ == "__main__":
