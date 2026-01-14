@@ -2,17 +2,18 @@
 FROM ubuntu:24.04
 
 # Скачивание и обновление пакетов
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y \
     python3 \
     python3-pip \
     python3-venv \
     curl \
     zstd \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && python3 -m venv /opt/venv \
+    && /opt/venv/bin/python -m pip install --upgrade pip \
+    && curl -fsSL https://ollama.com/install.sh | sh
 
-# Создание виртуального окружения
-RUN python3 -m venv /opt/venv && \
-    /opt/venv/bin/python -m pip install --upgrade pip
 ENV PATH="/opt/venv/bin:$PATH"
 
 # Создание рабочей директории и установка pip библиотек
@@ -20,8 +21,6 @@ WORKDIR /app
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Установка Ollama
-RUN curl -fsSL https://ollama.com/install.sh | sh
 
 # Открытие портов
 EXPOSE 8000 11434
