@@ -4,4 +4,6 @@ langchain_ollama
 langchain_chroma
 chromadb
 pypdf
+pypdf2
+unstructured
 fastapi[standard]

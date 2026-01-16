@@ -3,7 +3,7 @@ import hashlib
 import os
 import shutil
 from typing import List, Generator
-from langchain_community.document_loaders import PyPDFLoader  # Убрали TextLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import MarkdownTextSplitter
 from langchain_core.documents import Document
@@ -65,7 +65,7 @@ def split_text(documents: List[Document]) -> List[Document]:
     # Разделение текста с данными параметрами
     text_splitter = MarkdownTextSplitter(
         chunk_size=500,  # Размер каждого фрагмента в символах
-        chunk_overlap=100,
+        chunk_overlap=100, # Размер накладного слоя (конец одного chunk накладывается на начало второго chunk)
         length_function=len,  # Функция для вычисления длины текста
     )
     # Разделение документов на более мелкие фрагменты функцией text_splitter
