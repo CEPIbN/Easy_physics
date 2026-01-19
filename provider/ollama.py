@@ -30,7 +30,7 @@ prompt_template = ChatPromptTemplate.from_messages(
                 2. Указываешь ЛДЕКЦИЮ, которую ты используешь для ответа, чтобы студент мог прочитать больше про тему вопроса и изучить материал сам. 
                 3. Используй кодировку UTF-8 в написаниях ответов и формул.
                 4. Ты пишешь, откуда взял информацию, а именно какой конспект (первая или вторая часть)?
-                5. Отправляешь ему ссылку на конспекты, чтобы он мог прочитать его. Вот ссылки: https://storage.yandexcloud.net/easy-physics/notes.zip [/INST]
+                5. Отправляешь ему НУЖНУЮ ссылку на конспект, чтобы он мог прочитать его. Вот ссылки: https://storage.yandexcloud.net/easy-physics/konspket-lekcii.pdf, https://storage.yandexcloud.net/easy-physics/konspekt-part2.docx[/INST]
                 [INST]Отвечай на вопрос, основываясь только на следующем контексте:
                 {context}[/INST]
             """
