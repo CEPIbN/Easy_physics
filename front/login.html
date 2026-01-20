@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация | ИИ Ассистент</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <h1>ИИ Ассистент</h1>
+                </div>
+                <p class="tagline">Интеллектуальный помощник нового поколения</p>
+            </div>
+            
+            <div class="login-form-container">
+                <div class="form-header">
+                    <h2>Вход в систему</h2>
+                    <p>Введите ваши учетные данные для доступа к ИИ ассистенту</p>
+                </div>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Логин или Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                placeholder="Введите ваш логин или email"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+                        <div class="error-message" id="usernameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Введите ваш пароль"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Запомнить меня</label>
+                        </div>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-button" id="loginButton">
+                        <span class="button-text">Войти</span>
+                        <span class="button-loader">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                    
+                    <div class="social-login">
+                        <p class="divider">или войти с помощью</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-button google">
+                                <i class="fab fa-google"></i>
+                                <span>Google</span>
+                            </button>
+                            <button type="button" class="social-button github">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </button>
+                            <button type="button" class="social-button microsoft">
+                                <i class="fab fa-microsoft"></i>
+                                <span>Microsoft</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="register-link">
+                        <p>Нет учетной записи? <a href="#" id="registerLink">Зарегистрироваться</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="login-footer">
+                <p>ИИ Ассистент &copy; 2023 | Все права защищены</p>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Помощь</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-right">
+            <div class="welcome-overlay">
+                <div class="welcome-content">
+                    <h2>Добро пожаловать в мир ИИ</h2>
+                    <p>Ваш интеллектуальный помощник для решения повседневных задач, творчества и продуктивности.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-comment-dots"></i>
+                            <h4>Умный диалог</h4>
+                            <p>Естественное общение на любые темы</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-code"></i>
+                            <h4>Помощь в программировании</h4>
+                            <p>Генерация кода и решение технических задач</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Креативные идеи</h4>
+                            <p>Помощь в генерации идей и творчестве</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Безопасность</h4>
+                            <p>Ваши данные защищены и конфиденциальны</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="floating-elements">
+                <div class="floating-element el1"><i class="fas fa-brain"></i></div>
+                <div class="floating-element el2"><i class="fas fa-microchip"></i></div>
+                <div class="floating-element el3"><i class="fas fa-cogs"></i></div>
+                <div class="floating-element el4"><i class="fas fa-rocket"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Создание учетной записи</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="regName">Полное имя</label>
+                        <input type="text" id="regName" placeholder="Введите ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" placeholder="Введите ваш email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regUsername">Логин</label>
+                        <input type="text" id="regUsername" placeholder="Придумайте логин" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Пароль</label>
+                        <input type="password" id="regPassword" placeholder="Придумайте пароль" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Подтверждение пароля</label>
+                        <input type="password" id="regConfirmPassword" placeholder="Повторите пароль" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">Я согласен с <a href="#">условиями использования</a> и <a href="#">политикой конфиденциальности</a></label>
+                    </div>
+                    <button type="submit" class="register-button">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

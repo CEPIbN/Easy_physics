@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from provider.index import ChatMessage
@@ -13,11 +14,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/public", StaticFiles(directory="public"), name="public")
+app.mount("/front", StaticFiles(directory="front"), name="front")
 
 @app.get("/")
 async def read_root():
-    return {"Hello": "World"}
+    return FileResponse("front/index.html")
 
 
 @app.post("/chat/{chat_id}")
