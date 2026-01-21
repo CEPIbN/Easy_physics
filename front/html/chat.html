@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чат с ИИ ассистентом</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/front/css/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -12,19 +12,23 @@
     <div class="container">
         <header class="header">
             <div class="logo">
-                <i class="fas fa-robot"></i>
-                <h1>ИИ Ассистент</h1>
+                <i class="fas fa-lightbulb"></i>
+                <h1>ИИ помощник, по изучению курса физики</h1>
             </div>
-            <div class="status">
-                <span class="status-indicator"></span>
-                <span class="status-text">В сети</span>
+            <div class="header-controls">
+                <div class="theme-toggle">
+                    <button id="themeToggleBtn">
+                        <i class="fas fa-moon"></i>
+                        <span>Темная тема</span>
+                    </button>
+                </div>
             </div>
         </header>
-        
+
         <main class="main-content">
             <div class="sidebar">
                 <div class="sidebar-header">
-                    <h3>История чатов</h3>
+                    <h3>Текущий чат</h3>
                     <button class="new-chat-btn" id="newChatBtn">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -32,59 +36,36 @@
                 <div class="chat-history">
                     <div class="chat-history-item active">
                         <i class="fas fa-message"></i>
-                        <span>Новый диалог</span>
-                    </div>
-                    <div class="chat-history-item">
-                        <i class="fas fa-message"></i>
-                        <span>Вопросы по программированию</span>
-                    </div>
-                    <div class="chat-history-item">
-                        <i class="fas fa-message"></i>
-                        <span>Помощь с проектом</span>
-                    </div>
-                    <div class="chat-history-item">
-                        <i class="fas fa-message"></i>
-                        <span>Идеи для сайта</span>
+                        <span>Текущий диалог</span>
                     </div>
                 </div>
-                
                 <div class="ai-info">
-                    <h4>О ИИ ассистенте</h4>
+                    <h4>ОБ ИИ ассистенте</h4>
                     <p>Этот ИИ ассистент может помочь вам с различными задачами: ответить на вопросы, помочь с программированием, генерацией идей и многим другим.</p>
-                    <div class="capabilities">
-                        <span class="capability-tag">Текстовый анализ</span>
-                        <span class="capability-tag">Код-ассистент</span>
-                        <span class="capability-tag">Идеи и советы</span>
-                    </div>
                 </div>
             </div>
-            
+
             <div class="chat-container">
                 <div class="chat-messages" id="chatMessages">
-                    <!-- Сообщения будут добавляться здесь -->
                     <div class="message ai-message">
                         <div class="avatar">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-lightbulb"></i>
                         </div>
                         <div class="message-content">
                             <div class="message-sender">ИИ Ассистент</div>
                             <div class="message-text">Привет! Я ваш ИИ ассистент. Чем могу помочь вам сегодня?</div>
-                            <div class="message-time">Только что</div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="input-area">
                     <div class="input-container">
-                        <textarea 
-                            id="userInput" 
-                            placeholder="Введите ваше сообщение здесь... Нажмите Ctrl+Enter для отправки" 
+                        <textarea
+                            id="userInput"
+                            placeholder="Введите ваше сообщение здесь... Нажмите Ctrl+Enter для отправки"
                             rows="1"
                         ></textarea>
                         <div class="input-controls">
-                            <button class="action-btn" title="Очистить чат" id="clearChatBtn">
-                                <i class="fas fa-trash"></i>
-                            </button>
                             <button class="send-btn" id="sendBtn">
                                 <i class="fas fa-paper-plane"></i>
                                 <span>Отправить</span>
@@ -98,10 +79,6 @@
                 </div>
             </div>
         </main>
-        
-        <footer class="footer">
-            <p>ИИ Ассистент &copy; 2023 | Ответы генерируются искусственным интеллектом</p>
-        </footer>
     </div>
 
     <script src="script.js"></script>

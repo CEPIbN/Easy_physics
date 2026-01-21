@@ -5,7 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from provider.index import ChatMessage
 from provider.ollama import query_rag
 
+# Инициализация приложения Fastapi
 app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,13 +16,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Монтируем папку front
 app.mount("/front", StaticFiles(directory="front"), name="front")
 
+#Страница с чатом
 @app.get("/")
 async def read_root():
-    return FileResponse("front/index.html")
+    return FileResponse("./front/html/chat.html")
 
+@app.get("/register")
+async def read_register():
+    return FileResponse("./front/html/register.html")
 
+#
 @app.post("/chat/{chat_id}")
 async def ask(chat_id: str, message: ChatMessage):
     return {"response": query_rag(message, chat_id)}
