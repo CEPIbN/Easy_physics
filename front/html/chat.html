@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат с помощником</title>
+    <link rel="icon" type="image/x-icon" href="/front/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/front/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/front/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/front/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/front/favicon/site.webmanifest">
+    <link rel="stylesheet" href="/front/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-lightbulb"></i>
+                <h1>ИИ помощник, по изучению курса физики</h1>
+            </div>
+            <div class="header-controls">
+                <div class="theme-toggle">
+                    <button id="themeToggleBtn">
+                        <i class="fas fa-moon"></i>
+                        <span>Темная тема</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Текущий чат</h3>
+                    <button class="new-chat-btn" id="newChatBtn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="chat-history">
+                    <div class="chat-history-item active">
+                        <i class="fas fa-message"></i>
+                        <span>Текущий диалог</span>
+                    </div>
+                </div>
+                <div class="ai-info">
+                    <h4>ОБ ИИ ассистенте</h4>
+                    <p>Этот ИИ ассистент может помочь вам с различными темами по изучению курса физики.</p>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="avatar">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-sender">Помощник</div>
+                            <div class="message-text">Привет! Чем могу помочь вам сегодня?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <div class="input-container">
+                        <textarea
+                            id="userInput"
+                            placeholder="Введите ваше сообщение здесь... Нажмите Enter для отправки"
+                            rows="1"
+                        ></textarea>
+                        <div class="input-controls">
+                            <button class="send-btn" id="sendBtn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Отправить</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-hint">
+                        <i class="fas fa-info-circle"></i>
+                        ИИ может иногда допускать ошибки. Проверяйте важную информацию.
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/front/js/chat.js"></script>
+</body>
+</html>
