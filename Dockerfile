@@ -34,7 +34,7 @@ ollama serve &\n\
 # Ждем запуска Ollama\n\
 sleep 5\n\
 # Скачиваем модели\n\
-ollama pull mxbai-embed-large:latest\n\
+ollama pull nomic-embed-text-v2-moe\n\
 ollama pull gemma3:latest\n\
 # Запускаем приложение\n\
 uvicorn main:app --host 0.0.0.0 --port 8000\n' > /app/start.sh && \
