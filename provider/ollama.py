@@ -8,7 +8,7 @@ from provider.index import ChatMessage
 CHROMA_PATH = "./db_metadata"
 # Инициализируем модель Gemma3 для ответов и mxbai-embed для обработки файлов
 model = OllamaLLM(model="gemma3:latest", temperature=0.1)
-embedding_function = OllamaEmbeddings(model="mxbai-embed-large:latest")
+embedding_function = OllamaEmbeddings(model="nomic-embed-text-v2-moe")
 # Подготовка БД
 db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 # Переменная, в которой содержится переписка пользователя с ИИ

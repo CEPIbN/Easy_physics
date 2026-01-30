@@ -98,7 +98,7 @@ def save_to_chroma(chunks: List[Document]) -> None:
     # Создание новой БД на основе документов, используя Ollama embeddings
     db = Chroma.from_documents(
         documents=chunks,
-        embedding=OllamaEmbeddings(model="mxbai-embed-large"),
+        embedding=OllamaEmbeddings(model="nomic-embed-text-v2-moe"),
         persist_directory=CHROMA_PATH
     )
 
