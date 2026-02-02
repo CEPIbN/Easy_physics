@@ -74,7 +74,7 @@ db = Chroma.from_documents(
     )
 ```
 
-#### В файле `ollama.py`.
+#### В файле `/provider/ollama.py`.
 ```bash
 # Строка 10
 model = OllamaLLM(model="gemma3:latest", temperature=0.1)
