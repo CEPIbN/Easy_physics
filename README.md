@@ -1,5 +1,6 @@
 # Репозиторий для диплома "Разработка ИИ-помощника по изучению курса физики".
 
+---
 ## Расположение и значение файлов
 `db_metadata` - каталог, в котором хранятся вектора в базе данных Chroma.
 
@@ -16,3 +17,87 @@
 `ingest.py` - файл, который преобразует `.pdf` файлы во фрагменты (chunks) и передаёт их к векторной БД.
 
 `main.py` - файл для запуска fastapi приложения.
+
+---
+## Инструкция по использованию.
+
+>Выполнялось на Windows 11 в Powershell.
+
+
+#### Характеристики компьютера, на котором локально запускается проект:
+
+- CPU: i5-11400F, 6 ядер, 12 потоков;
+- GPU: Nvidia RTX 3060, 8ГБ;
+- RAM: 32 ГБ
+
+1. [Скачать Ollama](https://ollama.com/download)
+
+2. Склонировать репозиторий: 
+
+```bash
+git clone https://github.com/CEPIbN/Easy_physics.git
+```
+
+3. Перейти в каталог с репозиторием:
+
+```bash
+cd .\Easy_physics\
+```
+
+4. Создать виртуальное окружение venv:
+
+```bash
+python -m venv venv
+```
+
+5. Активировать виртуальное окружение 
+```bash
+.\venv\Scripts\activate
+```
+
+6. Установите pip-библиотеки из requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+---
+>В прокте и в ветках могут использоваться разные модели. 
+Чтобы узнать, какая используется, посмотрите часть кода:
+
+#### В файле `ingest.py`:
+
+```bash
+# Строка 99
+db = Chroma.from_documents(
+        documents=chunks,
+        embedding=OllamaEmbeddings(model="nomic-embed-text-v2-moe"),
+        persist_directory=CHROMA_PATH
+    )
+```
+
+#### В файле `ollama.py`.
+```bash
+# Строка 10
+model = OllamaLLM(model="gemma3:latest", temperature=0.1)
+embedding_function = OllamaEmbeddings(model="nomic-embed-text-v2-moe")
+```
+
+
+7. Скачайте используемые LLM: 
+
+```bash
+ollama pull qwen3:4b #Используется в dev ветке; 
+ollama pull nomic-embed-text-v2-moe # Используется во всех ветках; 
+ollama pull gemma3:latest # Используется в main ветке;
+```
+8. Запустите локальный сервер: 
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+>В Яндекс Браузере перейдя по http://0.0.0.0:8000/ можно получить ошибку. При вводе в адресной строке http://localhost:8000/ или http://127.0.0.1:8000/ ошибок быть не должно. 
+В Firefox такой ошибки не наблюдалось.
+>> При запуске Брандмауер спросит разрешение на работу сервера. Нажмите кнопку "Разрешить".
+
+При запуске сервера должна работать и Ollama тоже. Если будет выдавать ошибку, убедитесь, что ollama запущена и скачены необходимые LLM: 
+```bash
+ollama list
+```
