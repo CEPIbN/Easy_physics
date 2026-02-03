@@ -7,7 +7,7 @@ from provider.index import ChatMessage
 
 CHROMA_PATH = "./db_metadata"
 # Инициализируем модель Gemma3 для ответов и mxbai-embed для обработки файлов
-model = OllamaLLM(model="gemma3:latest", temperature=0.1)
+model = OllamaLLM(model="qwen3:4b", temperature=0.1)
 embedding_function = OllamaEmbeddings(model="nomic-embed-text-v2-moe")
 # Подготовка БД
 db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
@@ -31,7 +31,7 @@ prompt_template = ChatPromptTemplate.from_messages(
                 2. Указываешь лекцию, которую ты используешь для ответа, чтобы студент мог прочитать больше про тему вопроса и изучить материал сам. Не генерируй ссылки.
                 3. Используй кодировку UTF-8 в написаниях ответов и формул
                 4. Побольше цитируй конспекты, чтобы ответ был как можно подробным.
-                5. Ты пишешь, откуда взял информацию, а именно какой конспект (первая или вторая часть)?
+                5. Ты пишешь, откуда взял информацию, а именно какой конспект (файл konspekt-part1.pdf или konspekt-part2.pdf) и на какой странице находится информация?
                 6. Отправляешь ему эту ссылку с архивом конспектов, чтобы он мог прочитать их. Отправляй ссылку как есть. Не изменяй её, не дополняй. Другие ссылки не отправлять. Вот ссылка (не дополняй её): "https://storage.yandexcloud.net/easy-physics/notes.zip"
                 7. Ссылку "https://storage.yandexcloud.net/easy-physics/notes.zip" никак не меняй. Цифры не дописывай. Ссылку не трогай. Отправь её только один раз в конце своего ответа.[/INST]
                 [INST]Отвечай на вопрос, основываясь только на следующем контексте:

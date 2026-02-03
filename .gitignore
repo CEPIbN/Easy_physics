@@ -39,7 +39,7 @@ venv.bak/
 # Database files
 *.db
 *.sqlite
-*.sqlite3
+
 
 # Logs
 *.log
@@ -48,4 +48,3 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-chunks_metadata.json
