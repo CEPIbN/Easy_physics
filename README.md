@@ -85,9 +85,9 @@ embedding_function = OllamaEmbeddings(model="nomic-embed-text-v2-moe")
 7. Скачайте используемые LLM: 
 
 ```bash
-ollama pull qwen3:4b #Используется в dev ветке; 
+ollama pull qwen3:4b #Используется сейчас в проекте; 
 ollama pull nomic-embed-text-v2-moe # Используется во всех ветках; 
-ollama pull gemma3:latest # Используется в main ветке;
+ollama pull gemma3:latest # Пока не используется (окончательно не решил, нужно ли использовать эту модель в финальной версии проекта);
 ```
 
 > Если папка `db_metadata` пуста, то нужно запустить скрипт для создания чанков.
