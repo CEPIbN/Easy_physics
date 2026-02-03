@@ -89,6 +89,13 @@ ollama pull qwen3:4b #Используется в dev ветке;
 ollama pull nomic-embed-text-v2-moe # Используется во всех ветках; 
 ollama pull gemma3:latest # Используется в main ветке;
 ```
+
+> Если папка `db_metadata` пуста, то нужно запустить скрипт для создания чанков.
+
+```bash
+python.exe .\ingest.py
+```
+
 8. Запустите локальный сервер: 
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
