@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f5f7fa;
+    background-color: #ffffff;
     color: #333;
     line-height: 1.6;
     height: 100vh;
@@ -16,7 +16,7 @@ body {
 
 /* Темная тема */
 body.dark-mode {
-    background-color: #1a1a1a;
+    background-color: #2d2d2d;
     color: #f0f0f0;
 }
 
@@ -60,12 +60,6 @@ body.dark-mode textarea:focus {
     box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
 }
 
-body.dark-mode .footer {
-    background-color: #2d2d2d;
-    border-top: 1px solid #404040;
-    color: #aaa;
-}
-
 body.dark-mode .chat-history-item {
     color: #ccc;
 }
@@ -81,15 +75,6 @@ body.dark-mode .chat-history-item.active {
 
 body.dark-mode .input-hint {
     color: #aaa;
-}
-
-body.dark-mode .action-btn {
-    color: #aaa;
-}
-
-body.dark-mode .action-btn:hover {
-    color: #ff6b6b;
-    background-color: rgba(255, 107, 107, 0.1);
 }
 
 .container {
@@ -138,6 +123,56 @@ body.dark-mode .logo h1 {
     gap: 1rem;
 }
 
+/* Кнопки профиля и выхода */
+.profile-btn,
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #333;
+    transition: all 0.3s;
+    text-align: center;
+    text-decoration: none;
+}
+
+body.dark-mode .profile-btn,
+body.dark-mode .logout-btn {
+    border: 1px solid #555;
+    color: #f0f0f0;
+    background-color: #3d3d3d;
+}
+
+.profile-btn:hover {
+    background-color: #56ddf5;
+    color: #000000;
+    border-color: #11dbdf;
+}
+
+.logout-btn:hover {
+    background-color: #fc6464;
+    color: #000000;
+    border-color: #ffcdd2;
+}
+
+body.dark-mode .profile-btn:hover {
+    background-color: #56ddf5;
+    color: #000000;
+    border-color: #11dbdf;
+}
+
+body.dark-mode .logout-btn:hover {
+    background-color: #fc6464;
+    color: #000000;
+    border-color: #ffcdd2;
+}
+
 .theme-toggle button {
     display: flex;
     align-items: center;
@@ -160,11 +195,15 @@ body.dark-mode .theme-toggle button {
 }
 
 .theme-toggle button:hover {
-    background-color: #f0f0f0;
+    background-color: #c7c7c7;
+    color: #000000;
+    border-color: #ffcdd2;
 }
 
 body.dark-mode .theme-toggle button:hover {
-    background-color: #4d4d4d;
+    background-color: #c7c7c7;
+    color: #000000;
+    border-color: #ffcdd2;
 }
 
 .theme-toggle button i {
@@ -256,6 +295,31 @@ body.dark-mode .sidebar-header h3 {
     font-size: 0.9rem;
 }
 
+.ai-info {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eaeaea;
+}
+
+.ai-info h4 {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.ai-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body.dark-mode .ai-info h4 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .ai-info p {
+    color: #aaa;
+}
+
 /* Chat container styles */
 .chat-container {
     flex: 1;
@@ -293,29 +357,6 @@ body.dark-mode .sidebar-header h3 {
 
 .ai-message {
     align-self: flex-start;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.user-message .avatar {
-    background-color: #3a86ff;
-}
-
-.ai-message .avatar {
-    background-color: #ff6b6b;
-}
-
-.avatar i {
-    color: white;
-    font-size: 1.2rem;
 }
 
 .message-content {
@@ -386,9 +427,25 @@ textarea {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     resize: none;
-    overflow-y: auto;
+    overflow-y: hidden;
     max-height: 150px;
     transition: border-color 0.2s;
+}
+
+textarea.show-scrollbar {
+    overflow-y: auto; /* Показывает скроллбар */
+}
+
+/* Для темной темы */
+body.dark-mode textarea {
+    background-color: #3d3d3d;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+body.dark-mode textarea:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
 }
 
 textarea:focus {
@@ -404,21 +461,6 @@ textarea:focus {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-}
-
-.action-btn {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 6px;
-    transition: all 0.2s;
-}
-
-.action-btn:hover {
-    color: #ff6b6b;
-    background-color: rgba(255, 107, 107, 0.1);
 }
 
 .send-btn {
@@ -449,16 +491,6 @@ textarea:focus {
 
 .input-hint i {
     color: #3a86ff;
-}
-
-/* Footer styles */
-.footer {
-    padding: 1rem 2rem;
-    text-align: center;
-    background-color: white;
-    border-top: 1px solid #eaeaea;
-    color: #888;
-    font-size: 0.85rem;
 }
 
 /* Scrollbar styles */
@@ -514,24 +546,6 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
         padding: 0.75rem;
     }
 
-    .ai-info {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid #eaeaea;
-    }
-
-    .ai-info h4 {
-        margin-bottom: 0.75rem;
-        font-weight: 600;
-        color: #333;
-    }
-
-    .ai-info p {
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 1rem;
-    }
-
     .new-chat-btn {
         width: 36px;
         height: 36px;
@@ -549,6 +563,20 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
 
     .logo h1 {
         font-size: 1.2rem;
+    }
+
+    .profile-btn span,
+    .logout-btn span {
+        display: none;
+    }
+
+    .profile-btn,
+    .logout-btn {
+        padding: 0.5rem;
+    }
+
+    .header-controls {
+        gap: 0.5rem;
     }
 
     .chat-messages {

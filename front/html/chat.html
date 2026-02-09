@@ -21,6 +21,15 @@
                 <h1>ИИ помощник, по изучению курса физики</h1>
             </div>
             <div class="header-controls">
+                <!-- ЗАМЕНЯЕМ button на a -->
+            <a href="/front/html/profile.html" class="profile-btn" id="profileBtn">
+                <i class="fas fa-user"></i>
+                <span>Профиль</span>
+            </a>
+                <a href="/front/html/register.html" class="logout-btn" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Выйти</span>
+                </a>
                 <div class="theme-toggle">
                     <button id="themeToggleBtn">
                         <i class="fas fa-moon"></i>
@@ -33,7 +42,7 @@
         <main class="main-content">
             <div class="sidebar">
                 <div class="sidebar-header">
-                    <h3>Текущий чат</h3>
+                    <h3>Создать новый чат</h3>
                     <button class="new-chat-btn" id="newChatBtn">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -45,7 +54,7 @@
                     </div>
                 </div>
                 <div class="ai-info">
-                    <h4>ОБ ИИ ассистенте</h4>
+                    <h4>Об ИИ ассистенте:</h4>
                     <p>Этот ИИ ассистент может помочь вам с различными темами по изучению курса физики.</p>
                 </div>
             </div>
@@ -53,9 +62,6 @@
             <div class="chat-container">
                 <div class="chat-messages" id="chatMessages">
                     <div class="message ai-message">
-                        <div class="avatar">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
                         <div class="message-content">
                             <div class="message-sender">Помощник</div>
                             <div class="message-text">Привет! Чем могу помочь вам сегодня?</div>
@@ -85,7 +91,6 @@
             </div>
         </main>
     </div>
-
     <script src="/front/js/chat.js"></script>
 </body>
 </html>
