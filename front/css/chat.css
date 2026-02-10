@@ -77,15 +77,29 @@ body.dark-mode .input-hint {
     color: #aaa;
 }
 
+body.dark-mode .ai-info {
+    background-color: #2d2d2d;
+    border-top: 1px solid #404040;
+}
+
+body.dark-mode .ai-info h4 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .ai-info p {
+    color: #aaa;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    max-width: 1600px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* Header styles */
+/* Header styles - Логотип слева, кнопки справа */
 .header {
     display: flex;
     justify-content: space-between;
@@ -94,33 +108,39 @@ body.dark-mode .input-hint {
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid #eaeaea;
+    width: 100%;
 }
 
+/* Логотип прижат к левому краю */
 .logo {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-right: auto;
 }
 
 .logo i {
     font-size: 2rem;
-    color: #3a86ff;
+    color: #ffb33a;
 }
 
 .logo h1 {
     font-weight: 700;
     font-size: 1.5rem;
     color: #333;
+    white-space: nowrap;
 }
 
 body.dark-mode .logo h1 {
     color: #f0f0f0;
 }
 
+/* Кнопки прижаты к правому краю */
 .header-controls {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-left: auto;
 }
 
 /* Кнопки профиля и выхода */
@@ -140,6 +160,7 @@ body.dark-mode .logo h1 {
     transition: all 0.3s;
     text-align: center;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 body.dark-mode .profile-btn,
@@ -186,6 +207,7 @@ body.dark-mode .logout-btn:hover {
     font-size: 0.9rem;
     color: #333;
     transition: all 0.3s;
+    white-space: nowrap;
 }
 
 body.dark-mode .theme-toggle button {
@@ -219,17 +241,20 @@ body.dark-mode .theme-toggle button:hover {
     display: flex;
     flex: 1;
     overflow: hidden;
+    width: 100%;
 }
 
-/* Sidebar styles */
+/* Sidebar styles - прижат к левому краю */
 .sidebar {
     width: 280px;
+    min-width: 280px;
     background-color: #fff;
     border-right: 1px solid #eaeaea;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    height: 100%;
 }
 
 .sidebar-header {
@@ -295,38 +320,14 @@ body.dark-mode .sidebar-header h3 {
     font-size: 0.9rem;
 }
 
-.ai-info {
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid #eaeaea;
-}
-
-.ai-info h4 {
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    color: #333;
-}
-
-.ai-info p {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-body.dark-mode .ai-info h4 {
-    color: #f0f0f0;
-}
-
-body.dark-mode .ai-info p {
-    color: #aaa;
-}
-
-/* Chat container styles */
+/* Chat container styles - растянут на всё оставшееся пространство */
 .chat-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     background-color: #f9fafc;
     overflow: hidden;
+    width: 100%;
 }
 
 .chat-messages {
@@ -404,6 +405,25 @@ body.dark-mode .message-time {
 
 .user-message .message-time {
     color: rgba(255, 255, 255, 0.7);
+}
+
+/* Блок с информацией об ИИ - растянут по всей ширине чата */
+.ai-info {
+    padding: 1.5rem 2rem;
+    background-color: white;
+    border-top: 1px solid #eaeaea;
+    margin-top: auto;
+}
+
+.ai-info h4 {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.ai-info p {
+    font-size: 0.9rem;
+    color: #666;
 }
 
 /* Input area styles */
@@ -525,18 +545,32 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100px;
-        padding: 1rem;
+@media (max-width: 1024px) {
+    .logo h1 {
+        font-size: 1.2rem;
     }
 
-    .sidebar-header h3,
-    .btn-text,
+    .profile-btn span,
+    .logout-btn span,
     .theme-toggle button span {
         display: none;
     }
 
+    .profile-btn,
+    .logout-btn,
+    .theme-toggle button {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100px;
+        min-width: 100px;
+        padding: 1rem;
+    }
+
+    .sidebar-header h3,
     .chat-history-item span {
         display: none;
     }
@@ -562,17 +596,7 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
     }
 
     .logo h1 {
-        font-size: 1.2rem;
-    }
-
-    .profile-btn span,
-    .logout-btn span {
-        display: none;
-    }
-
-    .profile-btn,
-    .logout-btn {
-        padding: 0.5rem;
+        font-size: 1rem;
     }
 
     .header-controls {
@@ -583,15 +607,44 @@ body.dark-mode ::-webkit-scrollbar-thumb:hover {
         padding: 1.5rem 1rem;
     }
 
+    .ai-info {
+        padding: 1rem;
+    }
+
+    .ai-info h4 {
+        font-size: 0.9rem;
+    }
+
+    .ai-info p {
+        font-size: 0.8rem;
+    }
+
     .input-area {
         padding: 1rem;
     }
 
     textarea {
         padding-right: 140px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 70px;
+        min-width: 70px;
+        padding: 0.5rem;
     }
 
-    .theme-toggle button {
-        padding: 0.5rem;
+    .logo h1 {
+        display: none;
+    }
+
+    .logo i {
+        font-size: 1.5rem;
+    }
+
+    .header-controls {
+        gap: 0.25rem;
     }
 }
