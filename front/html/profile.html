@@ -7,102 +7,47 @@
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/front/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/front/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/front/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/front/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/front/favicon/site.webmanifest">
+    <link rel="stylesheet" href="/front/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="profile-container">
-        <!-- Боковая панель навигации -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <i class="fas fa-robot"></i>
-                    <h2>ИИ Ассистент</h2>
-                </div>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            
-            <nav class="nav-menu">
-                <ul>
-                    <li>
-                        <a href="chat.html">
-                            <i class="fas fa-comments"></i>
-                            <span>Чат с ИИ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="active">
-                            <i class="fas fa-user"></i>
-                            <span>Мой профиль</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-history"></i>
-                            <span>История чатов</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-cog"></i>
-                            <span>Настройки</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-credit-card"></i>
-                            <span>Подписка</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-question-circle"></i>
-                            <span>Помощь</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            
-            <div class="sidebar-footer">
-                <div class="user-mini-card">
-                    <div class="mini-avatar">
-                        <img src="https://ui-avatars.com/api/?name=Иван+Иванов&background=3a86ff&color=fff" alt="Аватар">
-                    </div>
-                    <div class="mini-user-info">
-                        <span class="mini-user-name">Иван Иванов</span>
-                        <span class="mini-user-role">Премиум</span>
-                    </div>
-                    <a href="login.html" class="logout-btn" title="Выйти">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </a>
-                </div>
-            </div>
-        </aside>
-        
-        <!-- Основной контент -->
         <main class="main-content">
             <header class="profile-header">
-                <h1>Мой профиль</h1>
-                <div class="header-actions">
-                    <button class="btn btn-secondary" id="backToChatBtn">
-                        <i class="fas fa-arrow-left"></i>
-                        <span>Вернуться в чат</span>
-                    </button>
-                    <button class="btn btn-primary" id="saveProfileBtn">
-                        <i class="fas fa-save"></i>
-                        <span>Сохранить изменения</span>
-                    </button>
+                <div class="logo">
+                    <i class="fas fa-lightbulb"></i>
+                    <h1>ИИ-помощник по изучению курса физики | Профиль</h1>
+                </div>
+                <div class="header-controls">
+                    <a href="/front/html/chat.html" class="profile-btn" id="profileBtn">
+                        <i class="fas fa-comment"></i>
+                        <span>Чат</span>
+                    </a>
+                    <a href="/front/html/register.html" class="logout-btn" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Выйти</span>
+                    </a>
+                    <div class="theme-toggle">
+                        <button id="themeToggleBtn">
+                            <i class="fas fa-moon"></i>
+                            <span>Темная тема</span>
+                        </button>
+                    </div>
                 </div>
             </header>
-            
+
             <div class="profile-content">
-                <!-- Левая колонка - информация профиля -->
                 <div class="profile-left">
                     <div class="profile-card">
                         <div class="profile-header-card">
                             <div class="avatar-section">
                                 <div class="avatar-wrapper">
-                                    <img src="https://ui-avatars.com/api/?name=Иван+Иванов&background=3a86ff&color=fff&size=150" 
+                                    <img src="https://ui-avatars.com/api/?name=Заглушка&background=3a86ff&color=fff&size=150"
                                          alt="Аватар пользователя" id="userAvatar">
                                     <div class="avatar-overlay">
                                         <button class="avatar-change-btn" id="changeAvatarBtn">
@@ -112,142 +57,54 @@
                                     </div>
                                 </div>
                                 <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
-                                
+
                                 <div class="avatar-info">
-                                    <h3 id="userDisplayName">Иван Иванов</h3>
-                                    <p class="user-role">
-                                        <span class="badge premium">Премиум аккаунт</span>
-                                    </p>
-                                    <p class="user-email" id="userEmail">ivan.ivanov@example.com</p>
-                                    <p class="member-since">Участник с: <span id="joinDate">15 марта 2023</span></p>
-                                </div>
-                            </div>
-                            
-                            <div class="stats-section">
-                                <div class="stat">
-                                    <div class="stat-value" id="totalChats">147</div>
-                                    <div class="stat-label">Всего диалогов</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="stat-value" id="aiTokens">12,540</div>
-                                    <div class="stat-label">Токенов использовано</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="stat-value" id="activeDays">89</div>
-                                    <div class="stat-label">Дней активности</div>
+                                    <h3 id="userDisplayName">Заглушка Заглушкович</h3>
+                                    <p class="user-email" id="userEmail">test@example.com</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="profile-details">
                             <div class="section-title">
                                 <i class="fas fa-info-circle"></i>
                                 <h3>Личная информация</h3>
                             </div>
-                            
+
                             <form id="personalInfoForm">
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="firstName">Имя</label>
-                                        <input type="text" id="firstName" value="Иван" required>
+                                        <input type="text" id="firstName" value="Заглушка" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="lastName">Фамилия</label>
-                                        <input type="text" id="lastName" value="Иванов" required>
+                                        <input type="text" id="lastName" value="Заглушкович" required>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" value="ivan.ivanov@example.com" required>
+                                    <input type="email" id="email" value="test@example.com" required>
                                 </div>
-                                
-                                <div class="form-group">
-                                    <label for="phone">Телефон</label>
-                                    <input type="tel" id="phone" value="+7 (912) 345-67-89">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="location">Местоположение</label>
-                                    <input type="text" id="location" value="Москва, Россия">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="bio">О себе</label>
-                                    <textarea id="bio" rows="3" placeholder="Расскажите немного о себе...">Разработчик программного обеспечения, интересуюсь ИИ и машинным обучением.</textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Уведомления</label>
-                                    <div class="checkbox-group">
-                                        <label class="checkbox-label">
-                                            <input type="checkbox" id="notifyEmail" checked>
-                                            <span>Email уведомления</span>
-                                        </label>
-                                        <label class="checkbox-label">
-                                            <input type="checkbox" id="notifyPush" checked>
-                                            <span>Push уведомления</span>
-                                        </label>
-                                        <label class="checkbox-label">
-                                            <input type="checkbox" id="notifyNews">
-                                            <span>Новости и обновления</span>
-                                        </label>
-                                    </div>
+
+                                <div class="form-group" style="margin-top: 2rem;">
+                                    <button type="button" class="btn btn-primary btn-block" id="saveProfileBtn">
+                                        <i class="fas fa-save"></i>
+                                        <span>Сохранить изменения</span>
+                                    </button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    
-                    <div class="security-card">
-                        <div class="section-title">
-                            <i class="fas fa-shield-alt"></i>
-                            <h3>Безопасность аккаунта</h3>
-                        </div>
-                        
-                        <div class="security-status">
-                            <div class="status-item">
-                                <div class="status-icon success">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="status-content">
-                                    <h4>Двухфакторная аутентификация</h4>
-                                    <p>Включена для дополнительной безопасности</p>
-                                </div>
-                                <button class="btn btn-text" id="toggle2FA">Управлять</button>
-                            </div>
-                            
-                            <div class="status-item">
-                                <div class="status-icon warning">
-                                    <i class="fas fa-exclamation"></i>
-                                </div>
-                                <div class="status-content">
-                                    <h4>Активные сессии</h4>
-                                    <p>2 активных устройства</p>
-                                </div>
-                                <button class="btn btn-text" id="viewSessions">Просмотреть</button>
-                            </div>
-                            
-                            <div class="status-item">
-                                <div class="status-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="status-content">
-                                    <h4>Последний вход</h4>
-                                    <p>Сегодня в 14:30 с Москва, Россия</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                
-                <!-- Правая колонка - смена пароля и настройки -->
                 <div class="profile-right">
                     <div class="change-password-card">
                         <div class="section-title">
                             <i class="fas fa-key"></i>
                             <h3>Смена пароля</h3>
                         </div>
-                        
+
                         <form id="changePasswordForm">
                             <div class="form-group">
                                 <label for="currentPassword">Текущий пароль</label>
@@ -259,7 +116,7 @@
                                 </div>
                                 <div class="error-message" id="currentPasswordError"></div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="newPassword">Новый пароль</label>
                                 <div class="input-with-icon">
@@ -277,7 +134,7 @@
                                 </div>
                                 <div class="error-message" id="newPasswordError"></div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="confirmPassword">Подтверждение пароля</label>
                                 <div class="input-with-icon">
@@ -288,129 +145,18 @@
                                 </div>
                                 <div class="error-message" id="confirmPasswordError"></div>
                             </div>
-                            
+
                             <button type="submit" class="btn btn-primary btn-block" id="changePasswordBtn">
                                 <i class="fas fa-key"></i>
                                 <span>Сменить пароль</span>
                             </button>
                         </form>
                     </div>
-                    
-                    <div class="preferences-card">
-                        <div class="section-title">
-                            <i class="fas fa-sliders-h"></i>
-                            <h3>Настройки ИИ ассистента</h3>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="aiModel">Модель ИИ</label>
-                            <select id="aiModel">
-                                <option value="gpt-4" selected>GPT-4 (Рекомендуется)</option>
-                                <option value="gpt-3.5">GPT-3.5 Turbo</option>
-                                <option value="claude">Claude</option>
-                                <option value="custom">Пользовательская модель</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="responseLength">Длина ответов</label>
-                            <select id="responseLength">
-                                <option value="short">Краткие</option>
-                                <option value="medium" selected>Средние</option>
-                                <option value="long">Подробные</option>
-                                <option value="auto">Автоматически</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="language">Язык ответов</label>
-                            <select id="language">
-                                <option value="ru" selected>Русский</option>
-                                <option value="en">Английский</option>
-                                <option value="auto">Автоматически</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Дополнительные возможности</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="enableCode" checked>
-                                    <span>Подсветка кода</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="enableVoice" checked>
-                                    <span>Голосовой ввод</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="enableHistory">
-                                    <span>Сохранение истории</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="enableAnalytics">
-                                    <span>Аналитика использования</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="danger-zone-card">
-                        <div class="section-title danger">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <h3>Опасная зона</h3>
-                        </div>
-                        
-                        <div class="danger-actions">
-                            <div class="danger-action">
-                                <div class="danger-content">
-                                    <h4>Экспорт данных</h4>
-                                    <p>Скачайте все ваши данные и историю чатов</p>
-                                </div>
-                                <button class="btn btn-outline" id="exportDataBtn">
-                                    <i class="fas fa-download"></i>
-                                    <span>Экспортировать</span>
-                                </button>
-                            </div>
-                            
-                            <div class="danger-action">
-                                <div class="danger-content">
-                                    <h4>Удалить историю чатов</h4>
-                                    <p>Безвозвратно удалить все сохраненные диалоги</p>
-                                </div>
-                                <button class="btn btn-outline" id="clearHistoryBtn">
-                                    <i class="fas fa-trash"></i>
-                                    <span>Очистить историю</span>
-                                </button>
-                            </div>
-                            
-                            <div class="danger-action">
-                                <div class="danger-content">
-                                    <h4>Деактивировать аккаунт</h4>
-                                    <p>Временно отключить ваш аккаунт</p>
-                                </div>
-                                <button class="btn btn-outline" id="deactivateAccountBtn">
-                                    <i class="fas fa-user-slash"></i>
-                                    <span>Деактивировать</span>
-                                </button>
-                            </div>
-                            
-                            <div class="danger-action">
-                                <div class="danger-content">
-                                    <h4>Удалить аккаунт</h4>
-                                    <p>Удалить аккаунт и все связанные данные навсегда</p>
-                                </div>
-                                <button class="btn btn-danger" id="deleteAccountBtn">
-                                    <i class="fas fa-trash-alt"></i>
-                                    <span>Удалить аккаунт</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </main>
     </div>
-    
+
     <!-- Модальные окна -->
     <div class="modal-overlay" id="avatarModal">
         <div class="modal modal-sm">
@@ -436,7 +182,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="modal-overlay" id="confirmModal">
         <div class="modal">
             <div class="modal-header">
@@ -456,6 +202,6 @@
     <!-- Уведомления -->
     <div class="notification-container" id="notificationContainer"></div>
     
-    <script src="profile.js"></script>
+    <script src="/front/js/profile.js"></script>
 </body>
 </html>
