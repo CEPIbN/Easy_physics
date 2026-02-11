@@ -77,7 +77,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #2667cc;
+    background-color: #56ddf5;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
 }
@@ -687,7 +687,7 @@ body {
     margin-left: auto;
 }
 
-.profile-btn, .logout-btn {
+.chat-btn, .logout-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -701,7 +701,7 @@ body {
     border: 1px solid #d0e3ff;
 }
 
-.profile-btn:hover, .logout-btn:hover {
+.chat-btn:hover, .logout-btn:hover {
     background-color: #e6f0ff;
 }
 
@@ -753,17 +753,32 @@ body.dark-theme .avatar-info h3 {
 }
 
 /* ИСПРАВЛЕНИЕ: текст кнопок в правом верхнем углу теперь белый */
-body.dark-theme .profile-btn,
-body.dark-theme .logout-btn {
+body.dark-theme .chat-btn {
     background-color: #3a3a3a;
-    color: #ffffff !important; /* Изменено с #3a86ff на #ffffff */
+    color: #ffffff;
     border-color: #505050;
 }
 
-body.dark-theme .profile-btn:hover,
+body.dark-theme .chat-btn:hover {
+    background-color: #56ddf5;
+    color: #ffffff;
+    border-color: #56ddf5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+}
+
+body.dark-theme .logout-btn {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border-color: #505050;
+}
+
 body.dark-theme .logout-btn:hover {
-    background-color: #4a4a4a;
-    color: #ffffff !important;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
 /* ИСПРАВЛЕНИЕ: кнопка переключения темы - белый текст */
