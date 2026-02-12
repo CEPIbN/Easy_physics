@@ -24,20 +24,6 @@ app.mount("/front", StaticFiles(directory="front"), name="front")
 async def read_root():
     return FileResponse("./front/html/chat.html")
 
-# Страница профиля
-@app.get("/profile")
-async def read_profile():
-    return FileResponse("./front/html/profile.html")
-
-# Страница регистрации
-@app.get("/register")
-async def read_register():
-    return FileResponse("./front/html/register.html")
-
-#Страница входа
-@app.get("/login")
-async def read_login():
-    return FileResponse("./front/html/login.html")
 
 #Отправка сообщения
 @app.post("/chat/{chat_id}")
