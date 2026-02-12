@@ -3,330 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация | ИИ Ассистент</title>
+    <title>Регистрация | Лёгкая физика</title>
     <link rel="stylesheet" href="/front/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Фавиконки (как на странице входа) -->
+    <link rel="icon" type="image/x-icon" href="/front/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/front/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/front/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/front/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/front/favicon/site.webmanifest">
 </head>
 <body>
     <div class="register-container">
-        <div class="register-left">
-            <div class="register-header">
-                <div class="logo">
-                    <a href="chat.html" class="back-link">
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                    <div>
-                        <i class="fas fa-robot"></i>
-                        <h1>ИИ Ассистент</h1>
-                    </div>
-                </div>
-                <p class="tagline">Присоединяйтесь к сообществу ИИ ассистента</p>
+        <div class="register-card">
+            <!-- Логотип (как на странице входа) -->
+            <div class="logo">
+                <i class="fas fa-lightbulb"></i>
+                <h1>Лёгкая физика</h1>
             </div>
-            
-            <div class="register-form-container">
-                <div class="form-header">
-                    <h2>Создание аккаунта</h2>
-                    <p>Заполните форму ниже, чтобы зарегистрироваться</p>
-                </div>
-                
-                <form id="registerForm" class="register-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">Имя <span class="required">*</span></label>
-                            <input 
-                                type="text" 
-                                id="firstName" 
-                                name="firstName" 
-                                placeholder="Введите ваше имя"
-                                required
-                            >
-                            <div class="error-message" id="firstNameError"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="lastName">Фамилия <span class="required">*</span></label>
-                            <input 
-                                type="text" 
-                                id="lastName" 
-                                name="lastName" 
-                                placeholder="Введите вашу фамилию"
-                                required
-                            >
-                            <div class="error-message" id="lastNameError"></div>
-                        </div>
-                    </div>
-                    
+
+            <!-- Заголовок формы -->
+            <div class="form-header">
+                <h2>Создание аккаунта</h2>
+                <p>Заполните форму, чтобы зарегистрироваться</p>
+            </div>
+
+            <!-- Форма регистрации -->
+            <form id="registerForm" class="register-form">
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <div class="input-with-icon">
-                            <i class="fas fa-envelope"></i>
-                            <input 
-                                type="email" 
-                                id="email" 
-                                name="email" 
-                                placeholder="Введите ваш email"
-                                required
-                            >
-                        </div>
-                        <div class="error-message" id="emailError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="username">Логин <span class="required">*</span></label>
+                        <label for="firstName">Имя <span class="required">*</span></label>
                         <div class="input-with-icon">
                             <i class="fas fa-user"></i>
-                            <input 
-                                type="text" 
-                                id="username" 
-                                name="username" 
-                                placeholder="Придумайте логин"
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Введите имя"
+                                autocomplete="given-name"
                                 required
                             >
                         </div>
-                        <div class="error-message" id="usernameError"></div>
-                        <div class="input-hint">
-                            Логин должен содержать от 3 до 20 символов (буквы, цифры, подчеркивание)
-                        </div>
+                        <div class="error-message" id="firstNameError"></div>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="password">Пароль <span class="required">*</span></label>
+                        <label for="lastName">Фамилия <span class="required">*</span></label>
                         <div class="input-with-icon">
-                            <i class="fas fa-lock"></i>
-                            <input 
-                                type="password" 
-                                id="password" 
-                                name="password" 
-                                placeholder="Придумайте пароль"
+                            <i class="fas fa-user"></i>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Введите фамилию"
+                                autocomplete="family-name"
                                 required
                             >
-                            <button type="button" class="toggle-password" id="togglePassword">
-                                <i class="fas fa-eye"></i>
-                            </button>
                         </div>
-                        <div class="password-strength" id="passwordStrength">
-                            <div class="strength-bar">
-                                <div class="strength-level" id="strengthLevel"></div>
-                            </div>
-                            <div class="strength-text">Надежность пароля: <span id="strengthText">низкая</span></div>
-                        </div>
-                        <div class="error-message" id="passwordError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPassword">Подтверждение пароля <span class="required">*</span></label>
-                        <div class="input-with-icon">
-                            <i class="fas fa-lock"></i>
-                            <input 
-                                type="password" 
-                                id="confirmPassword" 
-                                name="confirmPassword" 
-                                placeholder="Повторите пароль"
-                                required
-                            >
-                            <button type="button" class="toggle-password" id="toggleConfirmPassword">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <div class="error-message" id="confirmPasswordError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Телефон (необязательно)</label>
-                        <div class="input-with-icon">
-                            <i class="fas fa-phone"></i>
-                            <input 
-                                type="tel" 
-                                id="phone" 
-                                name="phone" 
-                                placeholder="+7 (XXX) XXX-XX-XX"
-                            >
-                        </div>
-                        <div class="error-message" id="phoneError"></div>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="agreeTerms" required>
-                            <span class="checkmark"></span>
-                            <span class="checkbox-text">
-                                Я согласен с <a href="#" class="terms-link">Условиями использования</a> и 
-                                <a href="#" class="terms-link">Политикой конфиденциальности</a> <span class="required">*</span>
-                            </span>
-                        </label>
-                        <div class="error-message" id="termsError"></div>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="subscribeNews">
-                            <span class="checkmark"></span>
-                            <span class="checkbox-text">
-                                Подписаться на новости и обновления ИИ ассистента
-                            </span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="register-button" id="registerButton">
-                        <span class="button-text">Зарегистрироваться</span>
-                        <span class="button-loader">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
-                    </button>
-                    
-                    <div class="social-register">
-                        <p class="divider">или зарегистрироваться с помощью</p>
-                        <div class="social-buttons">
-                            <button type="button" class="social-button google">
-                                <i class="fab fa-google"></i>
-                                <span>Google</span>
-                            </button>
-                            <button type="button" class="social-button github">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </button>
-                            <button type="button" class="social-button microsoft">
-                                <i class="fab fa-microsoft"></i>
-                                <span>Microsoft</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="login-link">
-                        <p>Уже есть аккаунт? <a href="login.html">Войти в систему</a></p>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="register-footer">
-                <p>ИИ Ассистент &copy; 2023 | Все права защищены</p>
-                <div class="footer-links">
-                    <a href="#">Помощь</a>
-                    <a href="#">Контакты</a>
-                    <a href="#">О нас</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="register-right">
-            <div class="register-benefits">
-                <div class="benefits-content">
-                    <h2>Преимущества регистрации</h2>
-                    <p>Создайте аккаунт, чтобы получить доступ ко всем возможностям ИИ ассистента</p>
-                    
-                    <div class="benefits-list">
-                        <div class="benefit">
-                            <div class="benefit-icon">
-                                <i class="fas fa-history"></i>
-                            </div>
-                            <div class="benefit-text">
-                                <h4>Сохранение истории</h4>
-                                <p>Доступ к истории всех ваших диалогов с ИИ</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit">
-                            <div class="benefit-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="benefit-text">
-                                <h4>Персонализация</h4>
-                                <p>Настройте ИИ ассистента под свои нужды</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit">
-                            <div class="benefit-icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <div class="benefit-text">
-                                <h4>Синхронизация</h4>
-                                <p>Доступ к вашим данным на всех устройствах</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit">
-                            <div class="benefit-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="benefit-text">
-                                <h4>Приоритетный доступ</h4>
-                                <p>Быстрые ответы и новые функции первыми</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit">
-                            <div class="benefit-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="benefit-text">
-                                <h4>Безопасность</h4>
-                                <p>Защита ваших данных и конфиденциальность</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonials">
-                        <h3>Что говорят пользователи</h3>
-                        <div class="testimonial">
-                            <div class="testimonial-content">
-                                <p>"ИИ ассистент изменил мой подход к работе. Теперь я экономлю часы каждый день!"</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="author-info">
-                                    <h5>Анна Петрова</h5>
-                                    <span>Дизайнер, 2 месяца с ИИ ассистентом</span>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="error-message" id="lastNameError"></div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="floating-elements">
-                <div class="floating-element el1"><i class="fas fa-user-plus"></i></div>
-                <div class="floating-element el2"><i class="fas fa-key"></i></div>
-                <div class="floating-element el3"><i class="fas fa-check-circle"></i></div>
-                <div class="floating-element el4"><i class="fas fa-rocket"></i></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Модальное окно успешной регистрации -->
-    <div class="modal-overlay" id="successModal">
-        <div class="modal modal-success">
-            <div class="modal-header">
-                <h3>Регистрация успешна!</h3>
-            </div>
-            <div class="modal-body">
-                <div class="success-icon">
-                    <i class="fas fa-check-circle"></i>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Введите ваш email"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+                    <div class="error-message" id="emailError"></div>
                 </div>
-                <h4>Добро пожаловать, <span id="welcomeName"></span>!</h4>
-                <p>Ваш аккаунт был успешно создан. Теперь вы можете войти в систему и начать использовать ИИ ассистента.</p>
-                <div class="next-steps">
-                    <p><strong>Что дальше?</strong></p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Проверьте вашу почту для подтверждения email</li>
-                        <li><i class="fas fa-check"></i> Войдите в систему с вашими учетными данными</li>
-                        <li><i class="fas fa-check"></i> Настройте профиль под свои предпочтения</li>
-                    </ul>
+
+                <!-- Пароль + индикатор силы -->
+                <div class="form-group">
+                    <label for="password">Пароль <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Придумайте пароль"
+                            autocomplete="new-password"
+                            required
+                        >
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <!-- Индикатор силы пароля -->
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar">
+                            <div class="strength-level" id="strengthLevel"></div>
+                        </div>
+                        <div class="strength-text">
+                            Надежность пароля: <span id="strengthText">низкая</span>
+                        </div>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="goToLoginBtn">Перейти к входу</button>
-                <button class="btn btn-primary" id="goToChatBtn">Начать использовать ИИ</button>
-            </div>
+
+                <!-- Подтверждение пароля -->
+                <div class="form-group">
+                    <label for="confirmPassword">Подтверждение пароля <span class="required">*</span></label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Повторите пароль"
+                            autocomplete="new-password"
+                            required
+                        >
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+
+                <!-- Кнопка регистрации -->
+                <button type="submit" class="register-button" id="registerButton">
+                    <span class="button-text">Зарегистрироваться</span>
+                    <span class="button-loader">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+
+                <!-- Ссылка на вход -->
+                <div class="login-link">
+                    <p>Уже есть аккаунт? <a href="/front/html/login.html">Войти в систему</a></p>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- Уведомления -->
+    <!-- Контейнер для уведомлений (стили есть) -->
     <div class="notification-container" id="notificationContainer"></div>
-    
-    <script src="register.js"></script>
+
+    <script src="/front/js/register.js"></script>
 </body>
 </html>
